@@ -41,10 +41,24 @@ class Timer extends React.Component{
 }
 
 class StopWatch extends React.Component {
+  constructor(props){
+    super(props);
+    this.tick = this.tick.bind(this);
+    this.state = {seconds : 0};
+  }
+
+  thisComponentWillMount(){
+    this.timerId = setInterval(this.tick,1000);
+  }
+  
+  tick(){
+    this.setState({seconds : seconds++});
+  }
+
   render(){
     return (
     <body> 
-      <Timer/>
+      <Timer time = {this.state.seconds}/>
       <div className ="row_buttons">
         <LapButton />
         <StartButton/>
@@ -56,4 +70,4 @@ class StopWatch extends React.Component {
   }
 }
 
-ReactDOM.render(<StopWatch /> , document.getElementById('root'));
+ReactDOM.render(<StopWatch/> , document.getElementById('root'));
