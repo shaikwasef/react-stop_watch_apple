@@ -46,15 +46,17 @@ class App extends React.Component {
     super(props);
     this.state = {seconds : 0};
     this.tick = this.tick.bind(this);
-    this.ComponentWillMount = this.ComponentWillMount.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
   }
 
-  ComponentWillMount(){
+  componentDidMount(){
     this.timerID = setInterval(this.tick, 1000);
   }
   
   tick(){
-    this.setState({seconds : 2});
+    let seconds = this.state.seconds ;
+    seconds = seconds + 1 ;
+    this.setState({seconds : seconds});
   }
 
   render(){
