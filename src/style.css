@@ -1,7 +1,7 @@
 body {
   position : relative ;
   top : 100px;
-  background : #232323; 
+  background: #232323; 
   display : flex;
   flex-direction: column;
   row-gap : 40px;
@@ -14,7 +14,6 @@ body {
 .row_buttons{
   width : 500px;
   height : 100px;
-  border : 2px solid red;
   display : flex;
   flex-direction : row;
   justify-content: space-evenly;
@@ -29,6 +28,24 @@ body {
   border : thick double black;
   text-align:  center;
 }
+
+.start{
+	background-color :#013606;
+	color : #03530B;
+}
+
+.stop{
+	background-color :#FB5557;
+	color : #FBC155;
+}
+/*css for lap button */
 .lap{
-  
+	background-color : #1E1E1E;
+	color:#565656;
+}
+
+/* css for reset button*/
+.reset{
+	background-color : #F3640B;
+	color:#FBB183;
 }
