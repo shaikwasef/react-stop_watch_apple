@@ -34,6 +34,7 @@ class LapButton extends React.Component{
 }
 class Timer extends React.Component{
   render(){
+    const time = this.props.time ;
     return (
       <div id="timer" >00:00:00</div>
     );
