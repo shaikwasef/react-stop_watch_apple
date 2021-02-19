@@ -2,6 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./style.css";
 
+class ScrollLap extends React.Component {
+  render(){
+    return (
+      <div class="scroll_lap"></div>
+    );
+  }
+}
 class StartButton extends React.Component {
   render() {
     return (
@@ -43,7 +50,7 @@ class StopWatch extends React.Component {
         <StartButton/>
         <ResetButton/>
       </div>
-      <div class="scroll_lap"></div>
+      <ScrollLap />
     </body>
     );
   }
