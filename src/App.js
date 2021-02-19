@@ -5,7 +5,7 @@ import "./style.css";
 class ScrollLap extends React.Component {
   render(){
     return (
-      <div class="scroll_lap"></div>
+      <div className="scroll_lap"></div>
     );
   }
 }
@@ -36,7 +36,7 @@ class Timer extends React.Component{
   render(){
     const time = this.props.time ;
     return (
-      <div id="timer" >00:00:00</div>
+      <div id="timer" >{time}</div>
     );
   }
 }
@@ -44,16 +44,17 @@ class Timer extends React.Component{
 class App extends React.Component {
   constructor(props){
     super(props);
-    this.tick = this.tick.bind(this);
     this.state = {seconds : 0};
+    this.tick = this.tick.bind(this);
+    this.ComponentWillMount = this.ComponentWillMount.bind(this);
   }
 
-  thisComponentWillMount(){
-    this.timerId = setInterval(this.tick,1000);
+  ComponentWillMount(){
+    this.timerID = setInterval(this.tick, 1000);
   }
   
   tick(){
-    this.setState({seconds : seconds++});
+    this.setState({seconds : 2});
   }
 
   render(){
