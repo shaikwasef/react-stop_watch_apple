@@ -27,6 +27,7 @@ body {
   line-height : 100px;
   border : thick double black;
   text-align:  center;
+  cursor : pointer ;
 }
 
 .start{
