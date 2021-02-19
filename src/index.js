@@ -1,6 +1,9 @@
-import React from "react";
-import ReactDOM from "react-dom";
+// import React from "react";
+// import ReactDOM from "react-dom";
+// import "./style.css";
 
-import App from "./App";
+// class StopWatch extends React.Component {
 
-ReactDOM.render(<App />, document.getElementById("root"));
+// }
+
+// ReactDOM.render(<StopWatch /> , document.getElementById('root'));
