@@ -36,7 +36,8 @@ class Timer extends React.Component{
   render(){
     const seconds = this.props.seconds ;
     const minutes = this.props.minutes;
-    const time = ('00' + minutes.toString()).slice(-2) + ':' + ('00' + seconds.toString()).slice(-2);
+    const hours = this.props.hours;
+    const time = ('00' + hours.toString()).slice(-2) + ':' + ('00' + minutes.toString()).slice(-2) + ':' + ('00' + seconds.toString()).slice(-2);
     return (
       <div id="timer" >{time}</div>
     );
@@ -60,11 +61,11 @@ class App extends React.Component {
     var minutes = this.state.minutes ;
     var hours = this.state.hours;
     seconds = seconds + 1 ;
-    if (seconds > 60){
+    if (seconds > 59){
       minutes = Math.floor(seconds/60);
       seconds  = 0 ;
     }
-    if(minutes > 60){
+    if(minutes > 59){
       hours = Math.floor(minutes/60);
       minutes = 0 ;
     }
@@ -74,7 +75,7 @@ class App extends React.Component {
   render(){
     return (
     <body> 
-      <Timer seconds = {this.state.seconds} minutes = {this.state.minutes}/>
+      <Timer seconds = {this.state.seconds} minutes = {this.state.minutes} hours = {this.state.hours}/>
       <div className ="row_buttons">
         <LapButton />
         <StartButton/>
