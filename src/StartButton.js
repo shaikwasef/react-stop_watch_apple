@@ -1,3 +1,6 @@
+import React from "react";
+import "./style.css";
+
 class StartButton extends React.Component {
   render() {
     return (
@@ -5,3 +8,4 @@ class StartButton extends React.Component {
     );
   }
 }
+export default StartButton ;

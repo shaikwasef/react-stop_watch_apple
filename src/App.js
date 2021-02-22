@@ -1,49 +1,15 @@
 import React from "react";
 import "./style.css";
-import StartButton from "./StartButton.js"
-
-
-class ScrollLap extends React.Component {
-  render(){
-    return (
-      <div className="scroll_lap"></div>
-    );
-  }
-}
-
-
-
-class ResetButton extends React.Component{
-  render() {
-    return (
-      <div className ="buttons reset reset_hidden">Reset</div>
-    );
-  }
-}
-
-class LapButton extends React.Component{
-  render(){
-    return (
-      <div className ="buttons lap">Lap </div>
-    );
-  }
-}
-class Timer extends React.Component{
-  render(){
-    const seconds = this.props.seconds ;
-    const minutes = this.props.minutes;
-    const hours = this.props.hours;
-    const time = ('00' + hours.toString()).slice(-2) + ':' + ('00' + minutes.toString()).slice(-2) + ':' + ('00' + seconds.toString()).slice(-2);
-    return (
-      <div id="timer" >{time}</div>
-    );
-  }
-}
+import StartButton from "./StartButton.js";
+import ResetButton from "./ResetButton.js";
+import ScrollLap from "./ScrollLap.js";
+import LapButton from "./LapButton.js";
+import Timer from "./Timer.js";
 
 class App extends React.Component {
   constructor(props){
     super(props);
-    this.state = {seconds : 0 , minutes : 0 , hours :0 , start : 0};
+    this.state = {seconds : 0 , minutes : 0 , hours :0 , start : true };
     this.tick = this.tick.bind(this);
     this.handleStartClick = this.handleStartClick.bind(this);
     //this.componentDidMount = this.componentDidMount.bind(this);
@@ -58,6 +24,10 @@ class App extends React.Component {
     else {
       clearInterval(this.timerID);
     }
+  }
+
+  handleResetClick(){
+    clearInterval(this.handleStartClick.timerID);
   }
   
   tick(){
@@ -83,7 +53,7 @@ class App extends React.Component {
       <div className ="row_buttons">
         <LapButton />
         <StartButton onClick = {this.handleStartClick}/>
-        <ResetButton/>
+        <ResetButton onClick = {this.handleResetClick}/>
       </div>
       <ScrollLap />
     </body>
