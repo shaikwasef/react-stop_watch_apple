@@ -9,6 +9,7 @@ class ScrollLap extends React.Component {
     );
   }
 }
+
 class StartButton extends React.Component {
   render() {
     return (
