@@ -2,10 +2,7 @@ import "./style.css";
 import React from "react";
 
 class Timer extends React.Component{
-  component(props){
-    super(props);
-    this.state = {previousTime : 0}
-  }
+
 
   render(){
     const seconds = this.props.seconds ;

@@ -20,8 +20,6 @@ class App extends React.Component {
     this.tick = this.tick.bind(this);
     this.handleStartClick = this.handleStartClick.bind(this);
     this.handleResetClick = this.handleResetClick.bind(this);
-    this.getMinutes  = this.getMinutes.bind(this);
-    this.lapTime = this.lapTime.bind(this);
   }
 
 
@@ -41,17 +39,17 @@ class App extends React.Component {
   }
 
   tick(){
-    seconds = this.state.seconds ;
+    let seconds = this.state.seconds ;
     seconds = seconds + 1 ;
     if (seconds > 59) {
-      minutes = Math.floor(seconds / 60);
+      this.setState({minutes : Math.floor(seconds / 60)});
       seconds = 0;
     }
-    if (minutes > 59) {
-      hours = Math.floor(minutes / 60);
-      minutes = 0;
+    if (this.state.minutes > 59) {
+      this.setState({hours : Math.floor(this.state.minutes / 60)});
+      this.setState({minutes : 0});
     }
-    this.setState({seconds : seconds , minutes: minutes, hours: hours});
+    this.setState({seconds : seconds});
   }
 
   render() {
@@ -64,7 +62,7 @@ class App extends React.Component {
         />
         <div className="row_buttons">
           <LapButton onClick={this.handleLapClick} />
-          <StartButton onClick={this.handleStartClick} />
+          <StartButton onClick={this.handleStartClick} status = {this.state.start}/>
           <ResetButton onClick={this.handleResetClick} />
         </div>
         <ScrollLap />
