@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+import StartButton from "./StartButton.js"
 
 
 class ScrollLap extends React.Component {
@@ -10,13 +11,7 @@ class ScrollLap extends React.Component {
   }
 }
 
-class StartButton extends React.Component {
-  render() {
-    return (
-    <div className ="buttons start" onClick = {this.props.onClick}>Start</div>
-    );
-  }
-}
+
 
 class ResetButton extends React.Component{
   render() {
@@ -59,6 +54,9 @@ class App extends React.Component {
     this.setState({start : start_button});
     if (start_button == 1){
       this.timerID = setInterval(this.tick, 1000);
+    }
+    else {
+      clearInterval(this.timerID);
     }
   }
   
