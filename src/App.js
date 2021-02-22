@@ -31,7 +31,7 @@ class App extends React.Component {
       ":" +
       ('00' + (this.state.seconds - parseInt(this.state.previousTime.slice(6))).toString()).slice(-2);
     this.setState({ laps: this.state.laps.concat(time_difference) });
-    this.setState({ previousTime: time_difference });
+    this.setState({ previousTime: ('00' + this.state.hours).slice(-2) + ':' + ('00' + this.state.minutes).slice(-2) + ':' + ('00' + this.state.seconds).slice(-2) });
   }
 
   handleStartClick() {
