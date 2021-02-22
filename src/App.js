@@ -7,7 +7,7 @@ import LapButton from "./LapButton.js";
 import Timer from "./Timer.js";
 
 class App extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       seconds: 0,
@@ -15,20 +15,25 @@ class App extends React.Component {
       hours: 0,
       start: true,
       laps: [],
-      previousTime: '00:00:00'
+      previousTime: "00:00:00"
     };
     this.tick = this.tick.bind(this);
     this.handleStartClick = this.handleStartClick.bind(this);
     this.handleResetClick = this.handleResetClick.bind(this);
   }
 
-  handleLapClick(){
-    const time_difference =  (this.state.hours - parseInt(previousTime(0,2))).toString() + ':' + (this.state.minutes - parseInt(previousTime(3,5))).toString() + ':' + (this.state.seconds - parseInt(previousTime(6))).toString() ;
-    this.setState({laps : laps.concat(time_difference)});
-    this.setState({previousTime : time_difference});
+  handleLapClick() {
+    const time_difference =
+      (this.state.hours - parseInt(previousTime(0, 2))).toString() +
+      ":" +
+      (this.state.minutes - parseInt(previousTime(3, 5))).toString() +
+      ":" +
+      (this.state.seconds - parseInt(previousTime(6))).toString();
+    this.setState({ laps: laps.concat(time_difference) });
+    this.setState({ previousTime: time_difference });
   }
 
-  handleStartClick(){
+  handleStartClick() {
     const start_button = !this.state.start;
     this.setState({ start: start_button });
     if (start_button == 0) {
@@ -43,18 +48,18 @@ class App extends React.Component {
     this.setState({ seconds: 0, minutes: 0, hours: 0, start: true });
   }
 
-  tick(){
-    let seconds = this.state.seconds ;
-    seconds = seconds + 1 ;
+  tick() {
+    let seconds = this.state.seconds;
+    seconds = seconds + 1;
     if (seconds > 59) {
-      this.setState({minutes : Math.floor(seconds / 60)});
+      this.setState({ minutes: Math.floor(seconds / 60) });
       seconds = 0;
     }
     if (this.state.minutes > 59) {
-      this.setState({hours : Math.floor(this.state.minutes / 60)});
-      this.setState({minutes : 0});
+      this.setState({ hours: Math.floor(this.state.minutes / 60) });
+      this.setState({ minutes: 0 });
     }
-    this.setState({seconds : seconds});
+    this.setState({ seconds: seconds });
   }
 
   render() {
@@ -67,10 +72,13 @@ class App extends React.Component {
         />
         <div className="row_buttons">
           <LapButton onClick={this.handleLapClick} />
-          <StartButton onClick={this.handleStartClick} status = {this.state.start}/>
+          <StartButton
+            onClick={this.handleStartClick}
+            status={this.state.start}
+          />
           <ResetButton onClick={this.handleResetClick} />
         </div>
-        <ScrollLap />
+        <ScrollLap lap_content={this.state.laps} />
       </body>
     );
   }
