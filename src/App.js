@@ -25,12 +25,12 @@ class App extends React.Component {
 
   handleLapClick() {
     const time_difference =
-      (this.state.hours - parseInt(this.state.previousTime(0, 2))).toString() +
+      ('00' + (this.state.hours - parseInt(this.state.previousTime.slice(0, 2))).toString()).slice(-2) +
       ":" +
-      (this.state.minutes - parseInt(this.state.previousTime(3, 5))).toString() +
+      ('00' + (this.state.minutes - parseInt(this.state.previousTime.slice(3, 5))).toString()).slice(-2) +
       ":" +
-      (this.state.seconds - parseInt(this.state.previousTime(6))).toString();
-    this.setState({ laps: laps.concat(time_difference) });
+      ('00' + (this.state.seconds - parseInt(this.state.previousTime.slice(6))).toString()).slice(-2);
+    this.setState({ laps: this.state.laps.concat(time_difference) });
     this.setState({ previousTime: time_difference });
   }
 
