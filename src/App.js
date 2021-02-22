@@ -13,7 +13,7 @@ class ScrollLap extends React.Component {
 class StartButton extends React.Component {
   render() {
     return (
-    <div className ="buttons start">Start</div>
+    <div className ="buttons start" onClick = {this.props.onClick}>Start</div>
     );
   }
 }
@@ -48,13 +48,18 @@ class Timer extends React.Component{
 class App extends React.Component {
   constructor(props){
     super(props);
-    this.state = {seconds : 0 , minutes : 0 , hours :0};
+    this.state = {seconds : 0 , minutes : 0 , hours :0 , start : 0};
     this.tick = this.tick.bind(this);
-    this.componentDidMount = this.componentDidMount.bind(this);
+    this.handleStartClick = this.handleStartClick.bind(this);
+    //this.componentDidMount = this.componentDidMount.bind(this);
   }
 
-  componentDidMount(){
-    this.timerID = setInterval(this.tick, 1000);
+  handleStartClick(){
+    const start_button = !(this.state.start);
+    this.setState({start : start_button});
+    if (start_button == 1){
+      this.timerID = setInterval(this.tick, 1000);
+    }
   }
   
   tick(){
@@ -70,7 +75,7 @@ class App extends React.Component {
       hours = Math.floor(minutes/60);
       minutes = 0 ;
     }
-    this.setState({seconds : seconds , minutes : minutes});
+    this.setState({seconds : seconds , minutes : minutes , hours : hours});
   }
 
   render(){
@@ -79,7 +84,7 @@ class App extends React.Component {
       <Timer seconds = {this.state.seconds} minutes = {this.state.minutes} hours = {this.state.hours}/>
       <div className ="row_buttons">
         <LapButton />
-        <StartButton/>
+        <StartButton onClick = {this.handleStartClick}/>
         <ResetButton/>
       </div>
       <ScrollLap />
