@@ -9,16 +9,17 @@ import Timer from "./Timer.js";
 class App extends React.Component {
   constructor(props){
     super(props);
-    this.state = {seconds : 0 , minutes : 0 , hours :0 , start : true };
+    this.state = {seconds : 0 , minutes : 0 , hours :0 , start : true};
     this.tick = this.tick.bind(this);
     this.handleStartClick = this.handleStartClick.bind(this);
+    this.handleResetClick = this.handleResetClick.bind(this);
     //this.componentDidMount = this.componentDidMount.bind(this);
   }
 
   handleStartClick(){
     const start_button = !(this.state.start);
     this.setState({start : start_button});
-    if (start_button == 1){
+    if (start_button == 0){
       this.timerID = setInterval(this.tick, 1000);
     }
     else {
@@ -27,7 +28,8 @@ class App extends React.Component {
   }
 
   handleResetClick(){
-    clearInterval(this.handleStartClick.timerID);
+    clearInterval(this.timerID);
+    this.setState({seconds : 0 , minutes : 0 , hours : 0 , start : true});
   }
   
   tick(){
