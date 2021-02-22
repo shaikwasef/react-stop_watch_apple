@@ -46,7 +46,7 @@ class App extends React.Component {
 
   handleResetClick() {
     clearInterval(this.timerID);
-    this.setState({ seconds: 0, minutes: 0, hours: 0, start: true });
+    this.setState({ seconds: 0, minutes: 0, hours: 0, start: true , previousTime : '00:00:00'});
   }
 
   tick() {

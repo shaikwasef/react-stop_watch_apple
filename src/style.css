@@ -52,7 +52,6 @@ body {
 }
 
 .scroll_lap {
-  border: 2px solid red;
   width: 400px;
   height: 200px;
   margin: auto;
@@ -60,6 +59,7 @@ body {
 	overflow : auto ;
 	flex-direction : column ;
 	align-items : center ;
+  overflow-x : hidden ;
 }
 
  .list{
@@ -71,6 +71,15 @@ body {
  	border: 10px transparent;
  	border-bottom : 2px solid white;
  	flex : 0 0 auto;
-   font-size : 30px ;
+  font-size : 30px ;
  }
 
+/*scrollers */
+ ::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 16px #e1eced;
+}
