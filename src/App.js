@@ -36,9 +36,9 @@ class Timer extends React.Component{
   render(){
     const seconds = this.props.seconds ;
     const minutes = this.props.minutes;
-    //const time = toString(minutes) + ':' + toString(seconds);
+    const time = ('00' + minutes.toString()).slice(-2) + ':' + ('00' + seconds.toString()).slice(-2);
     return (
-      <div id="timer" >{seconds} + {minutes}</div>
+      <div id="timer" >{time}</div>
     );
   }
 }
@@ -46,7 +46,7 @@ class Timer extends React.Component{
 class App extends React.Component {
   constructor(props){
     super(props);
-    this.state = {seconds : 0 , minutes : 0};
+    this.state = {seconds : 0 , minutes : 0 , hours :0};
     this.tick = this.tick.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
   }
@@ -56,10 +56,19 @@ class App extends React.Component {
   }
   
   tick(){
-    let seconds = this.state.seconds ;
+    var seconds = this.state.seconds ;
+    var minutes = this.state.minutes ;
+    var hours = this.state.hours;
     seconds = seconds + 1 ;
-    let minutes = Math.floor(seconds/60) ;
-    this.setState({seconds : seconds});
+    if (seconds > 60){
+      minutes = Math.floor(seconds/60);
+      seconds  = 0 ;
+    }
+    if(minutes > 60){
+      hours = Math.floor(minutes/60);
+      minutes = 0 ;
+    }
+    this.setState({seconds : seconds , minutes : minutes});
   }
 
   render(){
