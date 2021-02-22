@@ -15,13 +15,18 @@ class App extends React.Component {
       hours: 0,
       start: true,
       laps: [],
-      previousTime: 0
+      previousTime: '00:00:00'
     };
     this.tick = this.tick.bind(this);
     this.handleStartClick = this.handleStartClick.bind(this);
     this.handleResetClick = this.handleResetClick.bind(this);
   }
 
+  handleLapClick(){
+    const time_difference =  (this.state.hours - parseInt(previousTime(0,2))).toString() + ':' + (this.state.minutes - parseInt(previousTime(3,5))).toString() + ':' + (this.state.seconds - parseInt(previousTime(6))).toString() ;
+    this.setState({laps : laps.concat(time_difference)});
+    this.setState({previousTime : time_difference});
+  }
 
   handleStartClick(){
     const start_button = !this.state.start;
