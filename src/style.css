@@ -61,3 +61,15 @@ body {
 	flex-direction : column ;
 	align-items : center ;
 }
+
+ .list{
+ 	width : inherit ;
+ 	height: 80px;
+ 	text-align: center ;
+ 	line-height: 80px ;
+ 	border-radius : 30% ;
+ 	border: 10px transparent;
+ 	border-bottom : 2px solid white;
+ 	flex : 0 0 auto;
+ }
+

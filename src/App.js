@@ -20,15 +20,16 @@ class App extends React.Component {
     this.tick = this.tick.bind(this);
     this.handleStartClick = this.handleStartClick.bind(this);
     this.handleResetClick = this.handleResetClick.bind(this);
+    this.handleLapClick = this.handleLapClick.bind(this);
   }
 
   handleLapClick() {
     const time_difference =
-      (this.state.hours - parseInt(previousTime(0, 2))).toString() +
+      (this.state.hours - parseInt(this.state.previousTime(0, 2))).toString() +
       ":" +
-      (this.state.minutes - parseInt(previousTime(3, 5))).toString() +
+      (this.state.minutes - parseInt(this.state.previousTime(3, 5))).toString() +
       ":" +
-      (this.state.seconds - parseInt(previousTime(6))).toString();
+      (this.state.seconds - parseInt(this.state.previousTime(6))).toString();
     this.setState({ laps: laps.concat(time_difference) });
     this.setState({ previousTime: time_difference });
   }
